@@ -9,6 +9,7 @@ import { ReportsModule } from './reports/reports.module';
 import { UsersModule } from './users/users.module';
 import { User } from './users/user.entity';
 import { Report } from './reports/reports.entity';
+import { UsersService } from './users/users.service';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { Report } from './reports/reports.entity';
       synchronize: true,
     }),
   ],
-  controllers: [AppController, UsersController, ReportsController],
-  providers: [AppService, ReportsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
