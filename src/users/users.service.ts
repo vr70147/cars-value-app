@@ -2,12 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
-import { CreateUserDto } from './dtos/create-user.dtos';
 @Injectable()
 export class UsersService {
-  update(arg0: number, updateUserDto: CreateUserDto) {
-    throw new Error('Method not implemented.');
-  }
   constructor(@InjectRepository(User) private repo: Repository<User>) {}
 
   create(email: string, password: string) {
