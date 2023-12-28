@@ -12,6 +12,9 @@ export class UsersService {
   }
 
   findUser(id: number) {
+    if (!id) {
+      throw new NotFoundException('The user has logged out');
+    }
     return this.repo.findOneBy({ id });
   }
 
