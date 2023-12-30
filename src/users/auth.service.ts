@@ -33,7 +33,7 @@ export class AuthService {
     const [salt, storedHash] = user.password.split('.');
     const hash = (await scrypt(password, salt, 32)) as Buffer;
     if (storedHash !== hash.toString('hex')) {
-      throw new NotFoundException('bad password');
+      throw new BadRequestException('bad password');
     }
     return user;
   }
