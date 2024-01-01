@@ -11,10 +11,13 @@ export class CreateReportDto {
   @IsString()
   make: string;
 
-  @Min(1955)
-  @Max(new Date().getFullYear())
   @IsString()
   model: string;
+
+  @IsNumber()
+  @Min(1955)
+  @Max(new Date().getFullYear())
+  year: number;
 
   @Min(0)
   @Max(450000)
