@@ -14,4 +14,15 @@ export class ReportsService {
     report.user = user;
     return this.repo.save(report);
   }
+
+  async changeApproval(id: string, approved: boolean) {
+    const report = await this.repo.findOne({ where: { id: +id } });
+    if (!report) {
+      console.log('no');
+      throw new NotFoundException('report not found');
+    }
+    console.log(report);
+    report.approved = approved;
+    return this.repo.save(report);
+  }
 }
