@@ -13,9 +13,9 @@ export class UsersService {
 
   findUser(id: number) {
     if (!id) {
-      throw new NotFoundException('The user has logged out');
+      return null;
     }
-    return this.repo.findOneBy({ id });
+    return this.repo.findOne(id);
   }
 
   findAllUsers(email: string) {
