@@ -16,7 +16,7 @@ import { Serialize } from '../interceptors/serialize.interceptor';
 import { CurrentUser } from '../users/decorators/current-user.decorator';
 import { User } from '../users/user.entity';
 import { ApproveReportDto } from './dtos/approve-report.dto';
-import { adminGuard } from 'src/guards/admin.guard';
+import { adminGuard } from '../guards/admin.guard';
 import { GetEstimateDto } from './dtos/get-estimate.dto';
 
 @Controller('reports')
