@@ -45,3 +45,20 @@ This application is structured using the Nest.js framework and follows a modular
    ```bash
    git clone https://github.com/vr70147/cars-value-app
    cd cars-value-app
+
+2. Install dependencies:
+   ```bash
+   npm install
+   
+### Running the Application
+1. Start the server:
+   ```bash
+   npm run start
+
+2. The server should now be running on http://localhost:3000.
+
+### Testing
+1. Run unit and e2e tests:
+   ```bash
+   npm test  
+
