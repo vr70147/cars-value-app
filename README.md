@@ -1,73 +1,47 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Used Cars Valuation App
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a Used Cars Valuation App built using Nest.js with TypeScript and SQLite. It provides a platform for users to get valuations for used cars, manage user accounts, and generate reports.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Architecture
 
-## Description
+This application is structured using the Nest.js framework and follows a modular approach:
+- **Modules**: Each feature (Users, Authentication, Reports) is encapsulated within its own module.
+- **Controllers**: Handle incoming HTTP requests and responses. There are separate controllers for users, authentication, and reports.
+- **Services**: Business logic is handled in services, which are injected into controllers.
+- **Providers**: Encapsulate the implementation details of a service.
+- **Database**: Uses SQLite for data storage, with TypeORM for object-relational mapping.
+- **Exception Filters**: Handle exceptions that occur during runtime, ensuring graceful error handling.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Endpoints
 
-## Installation
+### Users Endpoints
 
-```bash
-$ npm install
-```
+**Base URL:** `/auth`
+- `GET /auth/whoami`: Returns the currently authenticated user. Requires authentication.
+- `POST /auth/signout`: Signs out the current user by clearing their session.
+- `POST /auth/signup`: Registers a new user. Requires user details in the request body.
+- `POST /auth/signin`: Authenticates a user and sets the user ID in the session.
+- `GET /auth/:id`: Retrieves a specific user by ID.
+- `GET /auth`: Retrieves all users or searches users by email if the email query parameter is provided.
+- `PATCH /auth/:id`: Updates a specific user's details. Requires user ID and new details in the request body.
+- `DELETE /auth/:id`: Deletes a specific user by ID.
 
-## Running the app
+### Reports Endpoints
 
-```bash
-# development
-$ npm run start
+**Base URL:** `/reports`
+- `POST /reports`: Creates a new report. Requires report details in the request body and user authentication.
+- `PATCH /reports/:id`: Updates the approval status of a report. Requires admin privileges and report ID in the URL and approval status in the request body.
+- `GET /reports`: Estimates report details based on provided query parameters. Does not require authentication.
 
-# watch mode
-$ npm run start:dev
+## Setup and Running
 
-# production mode
-$ npm run start:prod
-```
+### Prerequisites
+- Node.js
+- npm or yarn
+- SQLite
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/vr70147/cars-value-app
+   cd cars-value-app
